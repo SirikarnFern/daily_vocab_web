@@ -14,7 +14,6 @@ export default function Dashboard() {
   useEffect(() => {
     const history = JSON.parse(localStorage.getItem('wordHistory') || '[]');
     setTotalPractices(history.length);
-
     if (history.length > 0) {
       const totalScore = history.reduce((sum: number, item: any) => sum + item.score, 0);
       setAverageScore(totalScore / history.length);
