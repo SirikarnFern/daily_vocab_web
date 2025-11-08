@@ -16,10 +16,10 @@ export default function Home() {
         // const randomIndex = Math.floor(Math.random() * words.length);
         // const word = words[randomIndex]; // TODO fetch api
 
-        const response = await fetch("/api/word");
-        const result = await response.json();
+        const response = await fetch("http://localhost:8000/api/word");
+        const data = await response.json();
         
-        setCurrentWord(result.data);
+        setCurrentWord(data);
         setSentence('');
         setScore(0);
         setFeedbackColor('text-gray-700');
@@ -98,7 +98,7 @@ export default function Home() {
                         {currentWord.difficulty}
                     </span>
                 </div>
-                <p className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed">{currentWord.meaning}</p>
+                <p className="text-lg md:text-xl text-gray-700 mb-6 leading-relaxed">{currentWord.definition}</p>
 
                 <div className="mb-6">
                     <label htmlFor="sentence" className="block text-base font-medium text-gray-700 mb-2">Your Sentence:</label>
