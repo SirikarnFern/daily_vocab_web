@@ -14,6 +14,31 @@ export default function Home() {
 
     const getRandomWord = useCallback(async () => {
         // const randomIndex = Math.floor(Math.random() * words.length);
+    const handleSubmitSentence = async () => {
+    if (currentWord) {
+        const response = await fetch('http://localhost:8000/api/validate-sentence', {
+            method: 'POST', // <- Method POST
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ // <- JSON body
+                word_id: 1660904101,
+                sentence: sirikarn,
+            }),
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to validate sentence');
+        }
+
+        const data = await response.json();
+        setScore(data.score);
+        setIsSubmitted(true);
+
+       
+    }
+};
+
         // const word = words[randomIndex]; // TODO fetch api
 
         const response = await fetch("http://localhost:8000/api/word");
